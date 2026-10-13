@@ -28,9 +28,9 @@
  *      call. `ask` means blocked until approved — the proxy never
  *      prompts on the stdio channel (that channel is the protocol).
  *
- * GhostGuard itself is imported from its built dist in
- * ../ghostguard/dist — this package has zero runtime dependencies
- * of its own and does not modify the core package.
+ * GhostGuard itself is imported from the published ghostguard
+ * package — this package's only runtime dependency — and the core
+ * package is never modified.
  *
  * Usage:
  *   node src/proxy.mjs --config <config.json>
@@ -48,7 +48,7 @@ import {
   gatewayRecordFromDecision,
   createJsonlRecorder,
   mergePolicyDocs,
-} from "../../ghostguard/dist/index.js";
+} from "ghostguard";
 import { loadConfig } from "./config.mjs";
 import { approvalHash } from "./hash.mjs";
 import { isApproved } from "./approvals.mjs";

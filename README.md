@@ -7,7 +7,7 @@ By **Ghost Developer Studio**. Public repository — v0.1.0.
 Point any MCP client at this server instead of the real one. It spawns
 your real MCP server as a child process ("upstream"), forwards
 `initialize`, `tools/list`, and everything else untouched, and puts a
-[GhostGuard](../ghostguard/) gateway in front of `tools/call` only:
+[GhostGuard](https://github.com/littlestjames82-sys/ghostguard) gateway in front of `tools/call` only:
 
 1. **Classify** — the tool name is mapped to a GhostGuard
    `PermissionClass` via your config map. An unmapped tool gets the
@@ -186,28 +186,24 @@ One JSONL line per `tools/call`, allowed or blocked, in call order:
   forwarded to the client untouched but are not governed; if your
   upstream is chatty in both directions, review that surface too.
 - **It wraps GhostGuard, it isn't GhostGuard.** The engine is
-  imported from `../ghostguard/dist` — build that package first
-  (`npm run build` there) if its `dist/` is missing.
+  imported from the published `ghostguard` package — `npm install`
+  brings it in as this package's only runtime dependency.
 
 ## Status
 
 Built Oct 10, 2026 as a standalone package, public at v0.1.0; the core GhostGuard package is untouched
-(read/import only). Zero runtime dependencies (Node ≥ 18 stdlib +
-the local GhostGuard dist). See `REPORT.md` for test evidence.
+(read/import only). One runtime dependency (the published
+`ghostguard` package); everything else is Node ≥ 18 stdlib. See `REPORT.md` for test evidence.
 
 ## Repository layout note
 
-This add-on imports the GhostGuard core engine from a **sibling checkout**:
-`../../ghostguard/dist/index.js` (its source and/or tests do; nothing in the
-core is modified). To run it, clone the core next to this repo so both folders
-share a parent directory:
+This add-on imports the GhostGuard core engine from the **published
+`ghostguard` package** (`"ghostguard": "^0.1.0"` in `package.json`; nothing
+in the core is modified). To run it, clone this repo and install:
 
 ```sh
-git clone https://github.com/littlestjames82-sys/ghostguard
 git clone https://github.com/littlestjames82-sys/ghostguard-mcp
-# build the core once so dist/ exists:
-cd ghostguard && npm run build && cd ..
-cd ghostguard-mcp && npm test
+cd ghostguard-mcp && npm install && npm test
 ```
 
 Part of the GhostGuard family by **Ghost Developer Studio**.
