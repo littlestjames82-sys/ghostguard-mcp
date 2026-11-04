@@ -1,4 +1,5 @@
 # GhostGuard MCP Adapter (`ghostguard-mcp`)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) [![Release](https://img.shields.io/github/v/release/littlestjames82-sys/ghostguard-mcp)](https://github.com/littlestjames82-sys/ghostguard-mcp/releases)
 
 **A governed MCP proxy: every upstream `tools/call` is classified, policy-decided, and recorded — before it is forwarded.**
 
